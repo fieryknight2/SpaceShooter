@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.79.0</authoring_tool>
+    </contributor>
+    <created>2021-10-30T12:50:59</created>
+    <modified>2021-10-30T12:50:59</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="Delta_Fighter" name="Delta_Fighter">
+      <init_from>Delta%20Fighter.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="Material_001-effect">
+      <profile_COMMON>
+        <newparam sid="Delta_Fighter-surface">
+          <surface type="2D">
+            <init_from>Delta_Fighter</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Delta_Fighter-sampler">
+          <sampler2D>
+            <source>Delta_Fighter-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="Delta_Fighter-sampler"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="Material_001-material" name="Material_001">
+      <instance_effect url="#Material_001-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Sphere-mesh" name="Sphere">
+      <mesh>
+        <source id="Sphere-mesh-positions">
+          <float_array id="Sphere-mesh-positions-array" count="39">0 1.732051 0 5.424047 -1.25278e-7 0 0 -1.74846e-7 0.9999998 0 -1.732051 -1.78814e-7 -0.8660255 0.4 0.4999997 -0.8660255 0 0 0 0 -0.1999999 -0.8660255 -0.4 0.4999997 -1.203324 0.1790055 0.4079187 -1.203324 0 0.1841619 -1.203324 -0.1790055 0.4079187 0 -0.3000002 1.2 0 0.2999998 1.2</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-positions-array" count="13" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere-mesh-normals">
+          <float_array id="Sphere-mesh-normals-array" count="63">0.157667 0.493746 0.8551935 0.03660488 0.1146309 -0.9927335 0.03660488 -0.1146308 -0.9927336 0.157667 -0.4937462 0.8551935 -0.2236067 -0.1118032 -0.9682459 -0.2236067 0.1118034 -0.9682459 -0.8421518 0.4210759 -0.3368611 -0.2598197 0.4828285 0.8362838 -0.5 0 0.8660254 -0.322817 -0.7390619 -0.5912503 -0.2598199 -0.4828286 0.8362837 -0.8421519 -0.4210758 -0.3368608 -1 0 0 -0.2633581 0 0.9646981 -0.3228168 0.7390621 -0.5912499 -0.1516266 -0.5482867 -0.8224301 0.2160137 0 0.9763904 -0.1516266 0.5482866 -0.82243 -0.3228169 -0.7390623 -0.5912499 -0.2633581 0 0.9646982 -0.322817 0.7390618 -0.5912503</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-normals-array" count="21" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere-mesh-map-0">
+          <float_array id="Sphere-mesh-map-0-array" count="132">0.02033394 0.8545579 1.87862e-4 0.633242 0.6130408 0.6332421 0.3244106 0.0587325 0.5090897 1.87862e-4 0.5090897 0.6328662 0.3244106 0.0587325 0.5090897 0.6328662 0.140233 0.1188362 0.5090897 0.6328662 1.87862e-4 0.2913877 0.140233 0.1188362 0.7029438 0.3010986 0.5094654 0.2911001 0.7054933 0.2023699 0.7029438 0.3010986 0.7054933 0.2023699 0.8966802 0.3010992 0.7054933 0.2023699 0.7678896 0.1681818 0.8966802 0.3010992 0.7524324 0.1180528 0.7316964 1.87949e-4 0.9352677 0.08932459 0.7524324 0.1180528 0.665426 0.09983903 0.7316964 1.87949e-4 0.5157831 0.4198358 0.5509797 0.3686893 0.5538071 0.4004035 0.5094654 1.87862e-4 0.7316964 1.87949e-4 0.665426 0.09983903 0.5094654 1.87862e-4 0.665426 0.09983903 0.6443879 0.1678062 0.5538071 0.4004035 0.5509797 0.3686893 0.5841271 0.3906835 0.5846069 0.3014749 0.5509797 0.3686893 0.5094654 0.3489683 0.5157831 0.4198358 0.5778533 0.4212737 0.5695161 0.4664717 0.008900284 0.8549336 0.6174554 0.9273721 1.87862e-4 0.8940383 0.6174554 0.9273721 1.87942e-4 0.9607076 1.87862e-4 0.8940383 0.6174554 0.9273721 0.008900463 0.9998121 1.87942e-4 0.9607076 0.5428 0.4890704 0.5094654 0.4668473 0.5761347 0.4668473 0.5157831 0.4198358 0.5094654 0.3489683 0.5509797 0.3686893 0.5846069 0.3014749 0.5846066 0.3474354 0.5509797 0.3686893 0.5157831 0.4198358 0.5538071 0.4004035 0.5778533 0.4212737</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-map-0-array" count="66" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere-mesh-colors-Col" name="Col">
+          <float_array id="Sphere-mesh-colors-Col-array" count="198">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-colors-Col-array" count="66" stride="3">
+              <param name="R" type="float"/>
+              <param name="G" type="float"/>
+              <param name="B" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sphere-mesh-vertices">
+          <input semantic="POSITION" source="#Sphere-mesh-positions"/>
+        </vertices>
+        <triangles material="Material_001-material" count="22">
+          <input semantic="VERTEX" source="#Sphere-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Sphere-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Sphere-mesh-map-0" offset="2" set="0"/>
+          <input semantic="COLOR" source="#Sphere-mesh-colors-Col" offset="3" set="0"/>
+          <p>0 0 0 0 2 0 1 1 1 0 2 2 6 1 3 3 0 1 4 4 1 1 5 5 6 2 6 6 1 2 7 7 3 2 8 8 1 3 9 9 2 3 10 10 3 3 11 11 6 4 12 12 3 4 13 13 5 4 14 14 6 5 15 15 5 5 16 16 0 5 17 17 5 6 18 18 4 6 19 19 0 6 20 20 4 7 21 21 2 7 22 22 0 7 23 23 4 8 24 24 7 8 25 25 2 8 26 26 5 9 27 27 10 9 28 28 9 9 29 29 3 10 30 30 2 10 31 31 7 10 32 32 3 11 33 33 7 11 34 34 5 11 35 35 9 12 36 36 10 12 37 37 8 12 38 38 4 13 39 39 10 13 40 40 7 13 41 41 5 14 42 42 8 14 43 43 4 14 44 44 2 15 45 45 1 15 46 46 11 15 47 47 1 16 48 48 12 16 49 49 11 16 50 50 1 17 51 51 2 17 52 52 12 17 53 53 2 12 54 54 11 12 55 55 12 12 56 56 5 18 57 57 7 18 58 58 10 18 59 59 4 19 60 60 8 19 61 61 10 19 62 62 5 20 63 63 9 20 64 64 8 20 65 65</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers/>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Fighter" name="Fighter" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#Sphere-mesh" name="Fighter">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material_001-material" target="#Material_001-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
