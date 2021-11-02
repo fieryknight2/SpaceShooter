@@ -18,9 +18,11 @@ func _physics_process(_delta):
 	move_and_slide(Vector3(0, 0, speed));
 
 func _process(_delta):
-	if transform.origin.z > 10:
+	if transform.origin.z > 30:
 		queue_free();
 	if health <= 0:
+		main.CurrentScore += 50
+		main.EnemiesDefeated += 1
 		var ex = explo.instance()
 		ex.transform = transform
 		ex.explode()
@@ -40,7 +42,8 @@ func _on_Area_body_entered(body):
 	var p = body.get_parent()
 	if p.is_in_group("Players"):
 		p.health -= health
-		
+		main.CurrentScore += 25
+		main.EnemiesDefeated += 1
 		var ex = explo.instance()
 		ex.transform = transform
 		ex.explode()

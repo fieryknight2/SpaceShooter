@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/crosshair2.png-b45d2138cec8a5030abb9690974e8a3b.s3tc.stex"
-path.etc="res://.import/crosshair2.png-b45d2138cec8a5030abb9690974e8a3b.etc.stex"
+path.s3tc="res://.import/Asteroid.png-65127bda75557c26a8e7fc165753b5db.s3tc.stex"
+path.etc="res://.import/Asteroid.png-65127bda75557c26a8e7fc165753b5db.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://crosshair2.png"
-dest_files=[ "res://.import/crosshair2.png-b45d2138cec8a5030abb9690974e8a3b.s3tc.stex", "res://.import/crosshair2.png-b45d2138cec8a5030abb9690974e8a3b.etc.stex" ]
+source_file="res://blender/Asteroid.png"
+dest_files=[ "res://.import/Asteroid.png-65127bda75557c26a8e7fc165753b5db.s3tc.stex", "res://.import/Asteroid.png-65127bda75557c26a8e7fc165753b5db.etc.stex" ]
 
 [params]
 

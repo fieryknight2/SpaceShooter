@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Space Shooter"
-run/main_scene="res://scenes/Space.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -74,3 +74,4 @@ quality/driver/fallback_to_gles2=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://env/Space.tres"
+quality/dynamic_fonts/use_oversampling=false

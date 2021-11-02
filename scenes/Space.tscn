@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://env/Space.tres" type="Environment" id=1]
 [ext_resource path="res://prefabs/Delta Fighter.res" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/Space.gd" type="Script" id=4]
 [ext_resource path="res://fonts/FreeMono.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://fonts/FreeSansBold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://styles/Panel.tres" type="StyleBox" id=7]
+[ext_resource path="res://scripts/Asteroid Spawner.gd" type="Script" id=8]
 
 [sub_resource type="CapsuleMesh" id=1]
 radius = 0.1
@@ -27,20 +29,9 @@ bg_color = Color( 1, 0.890196, 0, 0.588235 )
 bg_color = Color( 0, 0, 0, 0.392157 )
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 1, 1, 1, 0.588235 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 8.0
-expand_margin_right = 8.0
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
-
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Open Finished Panel"
-length = 2.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -48,18 +39,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 3.03143 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 size = 225
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=8]
+size = 125
+font_data = ExtResource( 5 )
+
 [sub_resource type="DynamicFont" id=9]
-size = 175
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 40
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 60
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
 font_data = ExtResource( 5 )
 
 [node name="Space Area 1" type="Spatial"]
@@ -67,12 +74,24 @@ script = ExtResource( 4 )
 
 [node name="Delta Fighter" parent="." instance=ExtResource( 2 )]
 
-[node name="Enemy Spawner" type="Spatial" parent="."]
+[node name="EnemySpawner" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -350 )
 script = ExtResource( 3 )
 
-[node name="Timer" type="Timer" parent="Enemy Spawner"]
+[node name="Timer" type="Timer" parent="EnemySpawner"]
 wait_time = 2.0
+autostart = true
+
+[node name="Boss" type="Timer" parent="EnemySpawner"]
+wait_time = 50.0
+autostart = true
+
+[node name="AsteroidSpawner" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -442.583 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="AsteroidSpawner"]
+wait_time = 4.0
 autostart = true
 
 [node name="Environment" type="WorldEnvironment" parent="."]
@@ -84,7 +103,7 @@ amount = 10
 lifetime = 4.0
 mesh = SubResource( 1 )
 emission_shape = 1
-emission_sphere_radius = 50.0
+emission_sphere_radius = 80.0
 direction = Vector3( 0, 0, 1 )
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
@@ -123,8 +142,7 @@ __meta__ = {
 }
 
 [node name="Finished" type="Panel" parent="Control"]
-visible = false
-modulate = Color( 1, 1, 1, 0.25 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -133,13 +151,13 @@ margin_left = 590.0
 margin_top = 120.0
 margin_right = 1290.0
 margin_bottom = 920.0
-custom_styles/panel = SubResource( 6 )
+custom_styles/panel = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/Finished"]
-"anims/Open Finished Panel" = SubResource( 7 )
+"anims/Open Finished Panel" = SubResource( 6 )
 
 [node name="Label" type="Label" parent="Control/Finished"]
 anchor_left = 0.5
@@ -147,7 +165,7 @@ anchor_right = 0.5
 margin_left = -360.0
 margin_right = 360.0
 margin_bottom = 225.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "Defeat"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,14 +176,72 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -326.5
-margin_top = -181.0
-margin_right = 326.5
-custom_fonts/font = SubResource( 9 )
+margin_left = -326.0
+margin_top = -131.0
+margin_right = 327.0
+custom_fonts/font = SubResource( 8 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="timeout" from="Enemy Spawner/Timer" to="Enemy Spawner" method="_on_Timer_timeout"]
+[node name="Restart" type="Button" parent="Control/Finished"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -326.0
+margin_top = -275.0
+margin_right = 327.0
+margin_bottom = -144.0
+custom_fonts/font = SubResource( 8 )
+text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesDefeated" type="Label" parent="Control/Finished"]
+margin_left = 27.8994
+margin_top = 235.131
+margin_right = 567.899
+margin_bottom = 291.131
+custom_fonts/font = SubResource( 9 )
+text = "Enemies Defeated: "
+
+[node name="AsteroidsDestroyed" type="Label" parent="Control/Finished"]
+margin_left = 27.8994
+margin_top = 295.131
+margin_right = 684.899
+margin_bottom = 363.131
+custom_fonts/font = SubResource( 10 )
+text = "Asteroids Destroyed: "
+
+[node name="TotalScore" type="Label" parent="Control/Finished"]
+margin_left = 27.8994
+margin_top = 365.131
+margin_right = 626.899
+margin_bottom = 425.131
+custom_fonts/font = SubResource( 11 )
+text = "Total Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Control"]
+anchor_left = 20.979
+anchor_right = 26.229
+margin_left = -187.16
+margin_top = 3.0
+margin_right = 218.84
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 12 )
+text = "Score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_Timer_timeout"]
+[connection signal="timeout" from="EnemySpawner/Boss" to="EnemySpawner" method="_on_Boss_timeout"]
+[connection signal="timeout" from="AsteroidSpawner/Timer" to="AsteroidSpawner" method="_on_Timer_timeout"]
 [connection signal="pressed" from="Control/Finished/Quit" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Control/Finished/Restart" to="." method="_on_Restart_pressed"]
